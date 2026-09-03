@@ -1,0 +1,47 @@
+{
+  "collections": [
+    {
+      "name": "users",
+      "description": "User profiles and settings.",
+      "securityRules": {
+        "read": "request.auth != null && request.auth.uid == resource.id",
+        "write": "request.auth != null && request.auth.uid == resource.id"
+      },
+      "schema": {
+        "email": "string",
+        "createdAt": "timestamp"
+      }
+    },
+    {
+      "name": "jobs",
+      "description": "Generation jobs.",
+      "securityRules": {
+        "read": "request.auth != null && request.auth.uid == resource.data.userId",
+        "write": "request.auth != null && request.auth.uid == request.resource.data.userId"
+      },
+      "schema": {
+        "userId": "string",
+        "type": "string",
+        "status": "string",
+        "resultUrl": "string?",
+        "prompt": "string",
+        "createdAt": "timestamp",
+        "updatedAt": "timestamp"
+      }
+    },
+    {
+      "name": "audit_logs",
+      "description": "Logs for rate limiting and auditing.",
+      "securityRules": {
+        "read": "false",
+        "write": "false"
+      },
+      "schema": {
+        "userId": "string",
+        "action": "string",
+        "timestamp": "timestamp",
+        "details": "map"
+      }
+    }
+  ]
+}

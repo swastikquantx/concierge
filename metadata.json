@@ -1,0 +1,6 @@
+{
+  "name": "Concierge AI",
+  "description": "Unified AI creation and growth workspace by Swastik AI Labs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
